@@ -1,0 +1,41 @@
+//kafka
+//open zookeeper 
+bin/zookeeper-server-start.sh config/zookeeper.properties 
+
+//open kafka server
+bin/kafka-server-start.sh config/server.properties
+
+//create topic
+bin/kafka-topics.sh --bootstrap-server localhost:9092 --topic crypto_topic \
+--create --partitions 3 --replication-factor 1
+
+//check if topic running
+bin/kafka-topics.sh -list --bootstrap-server localhost:9092
+
+//open kafka consumer
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic crypto_topic --from-beginning
+
+//run fetch api
+python kafkaProducerService.py
+
+//cassandra
+//open cassandra
+./bin/cassandra -f
+
+//check nodetool status
+./bin/nodetool status
+
+//open cqlsh
+./bin/cqlsh
+add cql-queries
+
+//spark
+//run spark-submit
+sbt package && spark-submit --class processing.SparkRealTimePriceUpdates --master local[*] --packages "org.apache.spark:spark-sql-kafka-0-10_2.11:2.4.5,com.datastax.spark:spark-cassandra-connector_2.11:2.4.3" target/scala-2.11/sparkconsumer_2.11-1.0-RELEASE.jar
+
+//nodeRESTBackend
+node src/server.js
+
+//reactUI
+npm start
+
