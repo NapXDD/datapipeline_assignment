@@ -27,15 +27,6 @@ const HeroImage = () => {
         Real-Time <span style={{ color: '#f2a365' }}>Cryptocurrency</span>{' '}
         Updates
       </Box>
-      {/* <a
-        href="https://github.com/theavicaster/crypto-streaming"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <IconButton aria-label="github-repo" color="primary">
-          <GitHubIcon />
-        </IconButton>
-      </a> */}
     </Box>
   );
 };
